@@ -1,4 +1,7 @@
 //method for - `GET /api/schemes/`
+
+const db = require("../data/dbConfig");
+
 function find() {
   return db("schemes");
 }
@@ -56,4 +59,4 @@ module.exports = {
   update,
   remove,
   addStep
-}
+};
