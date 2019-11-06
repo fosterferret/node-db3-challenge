@@ -33,3 +33,17 @@ function update(changes, id) {
     .update(changes)
     .then(count => findById(id));
 }
+
+function remove(id) {
+  return db("schemes")
+    .where({ id })
+    .del();
+}
+
+function addStep(step, schemeId) {
+  return db("steps")
+    .insert({ ...step, schemeId })
+    .then(id => {
+      return db("steps").where({ id: id[0] });
+    });
+}
