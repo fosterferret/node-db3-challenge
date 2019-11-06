@@ -9,3 +9,12 @@ function findById(id) {
     .where({ id })
     .first();
 }
+
+//method for getting all steps for a given scheme, ordered correctly
+function findSteps(id) {
+  return db("steps")
+    .join("schemes", "schemes.id", "steps.scheme_id")
+    .select("steps.id", "scheme_name", "step_number", "instructions")
+    .where({ scheme_id: id })
+    .orderBy("step_number");
+}
