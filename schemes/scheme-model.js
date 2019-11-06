@@ -19,9 +19,17 @@ function findSteps(id) {
     .orderBy("step_number");
 }
 
-//method for adding schema
+//method for adding a schema
 function add(schema) {
   return db("schemes")
     .insert(schema)
     .then(ids => findById(ids[0]));
+}
+
+//method for updating a given schema
+function update(changes, id) {
+  return db("schemes")
+    .where({ id })
+    .update(changes)
+    .then(count => findById(id));
 }
