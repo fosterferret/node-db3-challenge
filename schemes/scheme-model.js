@@ -18,3 +18,10 @@ function findSteps(id) {
     .where({ scheme_id: id })
     .orderBy("step_number");
 }
+
+//method for adding schema
+function add(schema) {
+  return db("schemes")
+    .insert(schema)
+    .then(ids => findById(ids[0]));
+}
