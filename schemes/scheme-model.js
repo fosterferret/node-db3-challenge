@@ -47,3 +47,13 @@ function addStep(step, schemeId) {
       return db("steps").where({ id: id[0] });
     });
 }
+
+module.exports = {
+  find,
+  findById,
+  findSteps,
+  add,
+  update,
+  remove,
+  addStep
+}
